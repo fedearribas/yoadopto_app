@@ -1,3 +1,4 @@
+import { AdoptionDetailPage } from './../pages/adoptions/adoption-detail/adoption-detail';
 import { AdoptionsService } from './../pages/adoptions/adoptions.service';
 import { AdoptionsPage } from './../pages/adoptions/adoptions';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     MyApp,
     AdoptionsPage,
-    ListPage
+    ListPage,
+    AdoptionDetailPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     MyApp,
     AdoptionsPage,
-    ListPage
+    ListPage,
+    AdoptionDetailPage
   ],
   providers: [
     StatusBar,

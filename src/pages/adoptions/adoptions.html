@@ -11,14 +11,13 @@
   <h3>En adopcion</h3>
 
   <ion-card *ngFor="let adoption of adoptions">
-    <img src="{{adoption.image}}" />
+    <img src="{{adoption.image}}" (click)="onAdoptionClick(adoption)" />
     <ion-card-content>
       <ion-card-title>
-        {{adoption.name}}
+        {{( adoption.name.length>8)? (adoption.name | slice:0:8)+'...':(adoption.name) }}
       </ion-card-title>
-      {{adoption.description}}
+      {{( adoption.description.length>140)? (adoption.description | slice:0:140)+'...':(adoption.description) }}
+    <p><ion-note>Publicado el {{ adoption.created_at | date:"dd/MM/yyyy HH:mm:ss" }}</ion-note></p>
     </ion-card-content>
   </ion-card>
-
-
 </ion-content>
