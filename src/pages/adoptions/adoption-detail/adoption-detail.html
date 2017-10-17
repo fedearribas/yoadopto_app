@@ -6,3 +6,29 @@
     <ion-title>{{ adoption.name }}</ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-content padding>  
+
+  <ion-card>
+    <img src="{{adoption.image}}"/>
+    <ion-card-content>
+      <p><ion-note>Publicado por <b>{{ adoption.user.name }}</b> el {{ adoption.created_at | date:"dd/MM/yyyy HH:mm:ss" }}</ion-note></p>
+      <ion-card-title>
+        {{ adoption.name }}
+      </ion-card-title>
+      <p class="lead" style="margin-bottom: 10px;">{{ adoption.description }}</p>
+      <p class="lead">{{ adoption?.age }} {{ adoption?.age_measurement_unit }} de edad</p>
+      <p class="lead">
+          <ion-icon name="pin"></ion-icon>&nbsp;
+          Localidad: {{ adoption?.location }}
+      </p>
+            
+      <ion-item-divider color="light">
+          <p class="lead">Datos de contacto:</p>
+          <p><ion-icon name="call"></ion-icon>&nbsp;{{adoption.contact_phone}}</p>
+          <p><ion-icon name="mail"></ion-icon>&nbsp;{{adoption.contact_email}}</p>
+      </ion-item-divider>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
