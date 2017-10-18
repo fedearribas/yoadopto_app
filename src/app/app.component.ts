@@ -1,3 +1,6 @@
+import { AuthService } from './../pages/auth/auth.service';
+import { LoginPage } from './../pages/auth/login/login';
+import { Angular2TokenService } from 'angular2-token';
 import { AdoptionsPage } from './../pages/adoptions/adoptions';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -16,15 +19,28 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen, 
+    public _tokenService: Angular2TokenService, 
+    public authService: AuthService) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
+  
     this.pages = [
       { title: 'Adopciones', component: AdoptionsPage },
-      { title: 'Perdidos', component: ListPage }
+      { title: 'Perdidos', component: ListPage }     
     ];
 
+    this._tokenService.init({
+      apiBase: 'https://yoadopto-api-fedearribas.c9users.io',
+      oAuthBase: 'https://yoadopto-api-fedearribas.c9users.io',
+      oAuthWindowType: 'sameWindow',
+      oAuthPaths: {
+        facebook: 'auth/facebook'
+    },
+      oAuthCallbackPath: 'oauth_callback'
+    });
+    this.authService.validateToken();
   }
 
   initializeApp() {
@@ -36,9 +52,16 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+  logout() {
+    this.authService.signOut();
+    this.nav.goToRoot({});
+  }
+
+  openPage(page) {   
     this.nav.setRoot(page.component);
+  }
+
+  openLoginPage() {
+    this.nav.setRoot(LoginPage);
   }
 }

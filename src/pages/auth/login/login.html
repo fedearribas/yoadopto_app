@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ingresar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (submit)="onSignInSubmit()">
+    <ion-list>
+      
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="signInUser.email" name="email"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="signInUser.password" name="password"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <button ion-button type="submit" color="secondary" block>Ingresar</button>
+        </ion-item>
+      
+    </ion-list>
+  </form>
+</ion-content>

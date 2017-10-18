@@ -1,3 +1,7 @@
+import { Angular2TokenService } from 'angular2-token';
+import { RouterModule } from '@angular/router';
+import { AuthService } from './../pages/auth/auth.service';
+import { LoginPage } from './../pages/auth/login/login';
 import { AdoptionDetailPage } from './../pages/adoptions/adoption-detail/adoption-detail';
 import { AdoptionsService } from './../pages/adoptions/adoptions.service';
 import { AdoptionsPage } from './../pages/adoptions/adoptions';
@@ -12,17 +16,21 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     MyApp,
     AdoptionsPage,
     ListPage,
-    AdoptionDetailPage
+    AdoptionDetailPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
+    RouterModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -30,13 +38,16 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     AdoptionsPage,
     ListPage,
-    AdoptionDetailPage
+    AdoptionDetailPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AdoptionsService
+    AdoptionsService,
+    Angular2TokenService,
+    AuthService
   ]
 })
 export class AppModule {}
