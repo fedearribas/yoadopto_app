@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nueva mascota en adopción</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="adoptionForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <label ion-button color="primary">Seleccionar Imagen
+      <input type="file" style="display: none;" id="image" accept="image/*" formControlName="image" (change)="readUrl($event)">
+    </label>
+    <br>
+    <img *ngIf="imageSelected" [src]="imageUrl" id="image" width="150" height="150" size="30" />
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Descripción</ion-label>
+        <ion-textarea type="text" formControlName="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Edad</ion-label>
+        <ion-select formControlName="age">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
+          <ion-option value="7">7</ion-option>
+          <ion-option value="8">8</ion-option>
+          <ion-option value="9">9</ion-option>
+          <ion-option value="10">10</ion-option>
+          <ion-option value="11">11</ion-option>
+          <ion-option value="12">12</ion-option>
+          <ion-option value="13">13</ion-option>
+          <ion-option value="14">14</ion-option>
+          <ion-option value="15">15</ion-option>
+          <ion-option value="16">16</ion-option>
+          <ion-option value="17">17</ion-option>
+          <ion-option value="18">18</ion-option>
+          <ion-option value="19">19</ion-option>
+          <ion-option value="20">20</ion-option>
+        </ion-select>
+        <ion-select formControlName="ageUnit">
+          <ion-option value="meses">Meses</ion-option>
+          <ion-option value="años">Años</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Localidad</ion-label>
+        <ion-textarea type="text" formControlName="location"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Teléfono</ion-label>
+        <ion-textarea type="text" formControlName="phone"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-textarea type="text" formControlName="email"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button ion-button color="primary" block type="submit" [disabled]="isSaving">Guardar</button>
+  </form>
+</ion-content>

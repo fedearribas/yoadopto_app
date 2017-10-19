@@ -1,3 +1,4 @@
+import { AdoptionFormPage } from './../pages/adoptions/adoption-form/adoption-form';
 import { Angular2TokenService } from 'angular2-token';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './../pages/auth/auth.service';
@@ -24,7 +25,8 @@ import { HttpModule } from '@angular/http';
     AdoptionsPage,
     ListPage,
     AdoptionDetailPage,
-    LoginPage
+    LoginPage,
+    AdoptionFormPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { HttpModule } from '@angular/http';
     AdoptionsPage,
     ListPage,
     AdoptionDetailPage,
-    LoginPage
+    LoginPage,
+    AdoptionFormPage
   ],
   providers: [
     StatusBar,

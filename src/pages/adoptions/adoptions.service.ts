@@ -56,15 +56,14 @@ export class AdoptionsService {
     return this.adoptions.find(x => x.id == id);
  }
 
-  /* insertAdoption(adoption: Adoption) {
-    return this.httpClient.post(this.baseUrl, adoption).subscribe(
+  insertAdoption(adoption: Adoption) {
+    return this.httpClient.post(this.baseUrl, adoption).map(
       (data: Adoption) => {
-        this.adoptionsListChanged.next(this.adoptions);
-        this.router.navigate(['/adoptions']);
+        this.adoptionsListChanged.next(this.adoptions);       
       });
     }
 
-  updateAdoption(adoption: Adoption, redirect: boolean = true) {
+  /* updateAdoption(adoption: Adoption, redirect: boolean = true) {
     this.currentUserHeader = new HttpHeaders().set('CURRENTUSERID', this.authService.current_user.id.toString());
     return this.httpClient.put(this.baseUrl + '/' + adoption.id, adoption, {headers: this.currentUserHeader})
       .subscribe(
